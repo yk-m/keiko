@@ -74,4 +74,4 @@ class Sensor(models.Model):
         elif 25 <= ave_dry_time:
             superdry_time = 180
 
-        return superdry_time
+        return superdry_time * 2
