@@ -6,5 +6,5 @@ class SensorSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Sensor
-        fields = ('pk', 'temperature', 'humidity', 'created', )
-        read_only_fields = ('pk', 'created', )
+        fields = ('pk', 'temperature', 'humidity', 'superdry_time', 'created', )
+        read_only_fields = ('pk', 'superdry_time', 'created', )
