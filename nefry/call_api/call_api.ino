@@ -11,7 +11,7 @@ bool post_json(const char* host, const int port, const char* uri, String payload
 
 const int port = 80;
 const char* host = "163.43.29.4";
-const char* uri = "/api/v2/temperature/";
+const char* uri = "/api/v2/sensor/";
 
 void setup() {
   Nefry.setProgramName("Call API");
@@ -26,7 +26,7 @@ void loop() {
     return;
   }
 
-  String payload = "{\"degree\":" + String(t) + "}";
+  String payload = "{\"temperature\":" + String(t) + ", \"humidity\":" + String(h) + "}";
   if (post_json(host, port, uri, payload)) {
     Nefry.setLed(0, 255, 0);
     Nefry.println("Your request was sent successfully!");
