@@ -1,15 +1,10 @@
 from django.shortcuts import render
-from manager.models import Humidity, Temperature
+from manager.models import Sensor
 from rest_framework import viewsets
 
-from .serializer import HumiditySerializer, TemperatureSerializer
+from .serializer import SensorSerializer
 
 
-class TemperatureViewSet(viewsets.ModelViewSet):
-    queryset = Temperature.objects.all()
-    serializer_class = TemperatureSerializer
-
-
-class HumidityViewSet(viewsets.ModelViewSet):
-    queryset = Humidity.objects.all()
-    serializer_class = HumiditySerializer
+class SensorViewSet(viewsets.ModelViewSet):
+    queryset = Sensor.objects.all()
+    serializer_class = SensorSerializer
