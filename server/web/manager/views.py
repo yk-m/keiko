@@ -8,4 +8,4 @@ def print_time(request):
     sensor = Sensor.objects.order_by('-created').first()
     if sensor is None:
         return render(request, 'default.html')
-    return render(request, 'print_time.html', {"superdry_time": sensor.superdry_time})
+    return render(request, 'print_time.html', {"sensor": sensor})

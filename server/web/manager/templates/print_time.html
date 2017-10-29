@@ -1,9 +1,30 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title></title>
+  <meta charset="utf-8">
+
+  <title>Super dry</title>
+
+  <!-- Loading Bootstrap -->
+  <link href="/static/dist/css/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+
+  <!-- Loading Flat UI -->
+  <link href="/static/dist/css/flat-ui.min.css" rel="stylesheet">
+  <link href="/static/dist/css/demo4.css" rel="stylesheet">
 </head>
 <body>
-{{superdry_time}}
+  <div class="container">
+    <div class="demo-headline">
+      <h1 class="demo-logo">
+        <div class="logo"></div>
+        Super dry
+        <small>洗濯物の乾き時間がわかるかもしれないアプリ</small>
+      </h1>
+    </div> <!-- /demo-headline -->
+    気温：{{ sensor.temperature }}℃<br>
+    湿度：{{ sensor.humidity }}%<br>
+    あと{{ sensor.superdry_time }}分で乾くかもしれません
+  </div>
+
 </body>
 </html>
