@@ -17,8 +17,10 @@ import api.urls
 import rest_framework
 from django.conf.urls import include, url
 from django.contrib import admin
+from manager.views import print_time
 
 urlpatterns = [
+    url(r'^$', print_time),
     url(r'^admin/', admin.site.urls),
     url(r'^api/v2/', include(api.urls)),
 ]
