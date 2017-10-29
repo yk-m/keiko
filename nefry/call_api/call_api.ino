@@ -7,7 +7,9 @@
 
 DHT dht(DHTPIN, DHTTYPE);
 
-const int httpPort = 80;
+bool post_json(const char* host, const int port, const char* uri, String payload);
+
+const int port = 80;
 const char* host = "163.43.29.4";
 const char* uri = "/api/v2/temperature/";
 
@@ -24,29 +26,34 @@ void loop() {
     return;
   }
 
+  String payload = "{\"degree\":" + String(t) + "}";
+  if (post_json(host, port, uri, payload)) {
+    Nefry.setLed(0, 255, 0);
+    Nefry.println("Your request was sent successfully!");
+  } else {
+    Nefry.setLed(255, 0, 0);
+    Nefry.println("Not connected");
+  }
+  Nefry.ndelay(2000);
+}
+
+bool post_json(const char* host, const int port, const char* uri, String payload) {
   WiFiClient client;
 
-  if (!client.connect(host, httpPort)) {
-    Nefry.setLed(255, 0, 0);
-    Nefry.ndelay(2000);
-    Nefry.println("Not connected");
-    return;
+  if (!client.connect(host, port)) {
+    return false;
   }
-
-  String payload = "{\"degree\":" + String(t) + "}";
-
-  client.print(
-               String("POST ") + uri + " HTTP/1.1\r\n" +
+  
+  client.print("POST " + String(uri) + " HTTP/1.1" + "\r\n" +
                "Host: " + String(host) + "\r\n" +
-               "Connection: close\r\n" +
-               "Content-type: application/json\r\n" +
-               "Content-Length: " + String(payload.length()) + "\r\n" + 
-               "\r\n" +
+               "User-Agent: ESP8266/1.0" + "\r\n" +
+               "Connection: close" + "\r\n" +
+               "Content-type: application/json" + "\r\n" +
+               "Content-Length: " + String(payload.length()) + "\r\n" +
+               "" + "\r\n" +
                payload + "\r\n"
                );
-
-  Nefry.setLed(0, 255, 0);
-  Nefry.ndelay(2000);
-  Nefry.println("Your request was sent successfully!");
+  delay(10);
+  return true;
 }
 
