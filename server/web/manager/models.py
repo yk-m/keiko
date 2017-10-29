@@ -30,24 +30,24 @@ class Sensor(models.Model):
         else:
             sum_dry_time = 0
 
-        if 0 <= self.humidity:
-            sum_dry_time += 100
-        elif 10 <= self.humidity:
-            sum_dry_time += 100
-        elif 20 <= self.humidity:
-            sum_dry_time += 90
-        elif 30 <= self.humidity:
-            sum_dry_time += 70
-        elif 40 <= self.humidity:
-            sum_dry_time += 50
-        elif 50 <= self.humidity:
-            sum_dry_time += 40
-        elif 60 <= self.humidity:
-            sum_dry_time += 30
+        if 80 <= self.humidity:
+            sum_dry_time += 0
         elif 70 <= self.humidity:
             sum_dry_time += 10
-        elif 80 <= self.humidity:
-            sum_dry_time += 0
+        elif 60 <= self.humidity:
+            sum_dry_time += 30
+        elif 50 <= self.humidity:
+            sum_dry_time += 40
+        elif 40 <= self.humidity:
+            sum_dry_time += 50
+        elif 30 <= self.humidity:
+            sum_dry_time += 70
+        elif 20 <= self.humidity:
+            sum_dry_time += 90
+        elif 10 <= self.humidity:
+            sum_dry_time += 100
+        elif 0 <= self.humidity:
+            sum_dry_time += 100
 
         ave_dry_time = sum_dry_time / 2
 
