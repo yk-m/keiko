@@ -1,0 +1,42 @@
+.headline {
+  padding: 73px 0 50px;
+  text-align: center;
+}
+
+.logo {
+  font: 900 90px/100px 'Lato', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  margin: 10px 0;
+  letter-spacing: -2px;
+}
+
+.logo .logo-image {
+  display: block;
+  overflow: hidden;
+  width: 236px;
+  height: 150px;
+  margin: 0 auto 26px;
+  text-indent: -9999em;
+  background: url(/static/img/beer.png) center 0 no-repeat;
+  background-size: 150px;
+}
+
+.logo .description {
+  font-size: 22px;
+  font-weight: 600;
+  display: block;
+  padding-top: 5px;
+  letter-spacing: 0;
+  color: rgba(52, 73, 94, .3);
+}
+
+.contents p {
+  font-size: 30px;
+  font-weight: 300;
+  margin: 0;
+  text-align: center;
+}
+
+.contents .current {
+  font-size: 40px;
+  font-weight: 500;
+}
